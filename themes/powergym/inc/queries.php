@@ -1,9 +1,9 @@
-<?php function powerGym_lista_clases(){ ?>
+<?php function powerGym_lista_clases($cantidad = -1){ ?>
     <ul class="lista-clases">
       <?php 
         $args = array(
           'post_type' => 'powerGym_clases',
-          'posts_per_page' => 6,
+          'posts_per_page' => $cantidad,
           'orderby' => 'title',
           'order' => 'ASC'
         );
