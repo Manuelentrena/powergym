@@ -1,7 +1,5 @@
-<?php while(have_posts()): the_post(); ?>
-  <li class="card gradient">
 
-    
+  <li class="card gradient">
     <a class="link-img" href="<?php the_permalink(); ?>">
     <?php the_post_thumbnail('mediano') ?>
     </a>
@@ -21,4 +19,3 @@
       </p>
     </div>
   </li>
-<?php endwhile; ?>

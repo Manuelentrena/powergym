@@ -1,10 +1,12 @@
 <?php get_header('front') ?>
 
+<!-- BIENVENIDA -->
 <section class="bienvenida text-center seccion">
   <h2 class="texto-primario"><?php the_field('encabezado_bienvenida'); ?></h2>
   <p><?php the_field('texto_bienvenida'); ?></p>
 </section>
 
+<!-- AREAS -->
 
 <div class="seccion-areas">
   <ul class="contenedor-areas">
@@ -47,6 +49,8 @@
   </ul>
 </div>
 
+<!-- CLASES -->
+
 <section class="clases">
   <div class="contenedor seccion">
     <h2 class="text-center texto-primario">Nuestras Clases</h2>
@@ -58,6 +62,8 @@
     </div>
   </div>
 </section>
+
+<!-- INSTRUCTORES -->
 
 <section class="instructores">
   <div class="contenedor seccion">
@@ -98,5 +104,54 @@
 
   </div>
 </section>
+
+<!-- TESTIMONIALES -->
+
+  <section class="testimoniales">
+    <h2 class="text-center texto-blanco">Testimoniales</h2>
+    <div class="contenedor-testimoniales">
+      <ul class="listado-testimoniales">
+        <?php 
+          $args = array(
+            'post_type' => 'testimoniales',
+            'posts_per_page' => 10
+          );
+          $testimoniales = new WP_Query($args);
+        ?>
+        <?php  while($testimoniales->have_posts()): $testimoniales->the_post(); ?>
+          <li class="testimonial text-center texto-blanco">
+            <blockquote>
+              <?php the_content(); ?>
+            </blockquote>
+            <footer class="testimonial-footer">
+              <?php the_post_thumbnail('thumbnail') ?>
+              <p><?php the_title(); ?></p>
+            </footer>
+          
+          </li>
+        <?php endwhile; wp_reset_postdata(); ?>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- BLOG -->
+
+  <section class="blog contenedor seccion">
+    <h2 class="text-center texto-primario">Nuestro Blog</h2>
+    <p class="text-center">Aprende tips de nuestros instructores expertos</p>
+    <ul class="listado-blog">
+      <?php 
+        $args = array(
+          'post_type' => 'post',
+          'posts_per_page' => 4
+        );
+        $blog = new WP_Query($args);
+      ?>
+      <?php  while($blog->have_posts()): $blog->the_post(); ?>
+        <?php get_template_part('template-parts/loop','blog'); ?>
+      <?php endwhile; wp_reset_postdata();?>
+    </ul>
+  </section>
 
 <?php get_footer(); ?>

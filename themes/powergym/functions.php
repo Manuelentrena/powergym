@@ -71,6 +71,11 @@
       wp_enqueue_style( 'leafletCSS', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.css' , array() , '1.6.0');
     endif;
 
+    /* bxSliderCSS */
+    if(is_page('inicio')):
+      wp_enqueue_style( 'bxSliderCSS', 'https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css' , array() , '4.2.12');
+    endif;
+
     /* Esquema 
       Igual que wp_enqueue_style menos el ultimo parámetro
       $footer:string, si lo quieres cargar en el footer
@@ -90,6 +95,11 @@
     /* leafletJS */
     if(is_page('contacto')):
       wp_enqueue_script( 'leafletJS', 'https://unpkg.com/leaflet@1.6.0/dist/leaflet.js' , array() , '1.6.0', true);
+    endif;
+
+    /* bxSliderJS */
+    if(is_page('inicio')):
+      wp_enqueue_script( 'bxSliderJS', 'https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js' , array('jquery') , '4.2.12', true);
     endif;
   }
 
